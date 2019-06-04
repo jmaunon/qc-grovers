@@ -3,31 +3,106 @@
 El primer paso es el de \textit{inicializar} nuestro sistema. Para ello se hace uso del principio de superposicíon, es decir, en lugar de buscar en un único lugar, buscamos en varios al mismo tiempo.
 \pause
 \begin{eqnarray}
-(I^{\otimes n}\otimes X)\ket{0}_{n+1}&=&\ket{0}_n\otimes\ket{1}
+(I^{\otimes n}\otimes X)\left.|0\right\rangle _{n+1}&=&\left.|0\right\rangle _{n}\otimes\left.|1\right\rangle \nonumber\\
+H^{\otimes\left(n+1\right)}\left[(I^{\otimes n}\otimes X)\left.|0\right\rangle _{n+1}\right]&=&H^{\otimes n}\left.|0\right\rangle _{n}\otimes H\left.|1\right\rangle \nonumber\\
+&=&\sum_{j\in\{0,1\}^{n}}\frac{1}{\sqrt{2^{n}}}\left.|j\right\rangle _{n}\otimes\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)\nonumber\\
+&=&\sum_{j\in\{0,1\}^{n}}\alpha_{j}\left.|j\right\rangle _{n}\otimes\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)\nonumber\\
+&=&\psi_{n}\times\psi_{1}\nonumber
 \end{eqnarray}
 \end{frame}
 
-%\begin{frame}
-%\frametitle{Definiciones básicas}
-%
-%\begin{block}[Producto tensorial]
-%  Dado $A\in\mathbb{C}^{m\times n}$, $B\in\mathbb{C}^{p\times q}$, el producto tensorial $A\otimes B$ es la matriz            $D\in\mathbb{C}^{pm\times nq}$ tal que:
-%	\[
-%		D:=A\otimes B = 		
-%		\begin{pmatrix}
-%    a_{11}B & \cdots & a_{1n}B \\
-%    a_{21}B & \cdots & a_{2n}B \\
-%    \vdots  &        &  \vdots \\
-%    a_{m1}B & \cdots & a_{mn}B
-%  		\end{pmatrix}
-%	\]
-%\end{block}
-%
-%
-%\begin{block}
-%  \[
-%  x\otimes y = \colvec{2}{1}{0}\otimes\colvec{2}{0}{1}=\colvec{4}{0}{1}{0}{0}
-%  \]
-%\end{block}
-%
-%\end{frame}
+\begin{frame}
+\frametitle{Definiciones básicas}
+
+\begin{exampleblock}{Inicialización}
+\begin{eqnarray}
+(I^{\otimes3}\otimes X)\left.|0\right\rangle _{3+1}&=&I^{\otimes3}\left.|0\right\rangle _{3}\otimes X\left.|0\right\rangle \\&=&\left(\begin{array}{cccccccc}
+1\\
+ & 1\\
+ &  & 1\\
+ &  &  & 1\\
+ &  &  &  & 1\\
+ &  &  &  &  & 1\\
+ &  &  &  &  &  & 1\\
+ &  &  &  &  &  &  & 1
+\end{array}\right)\left(\begin{array}{c}
+1\\
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+0
+\end{array}\right)\otimes\left(\begin{array}{cc}
+0 & 1\\
+1 & 0
+\end{array}\right)\left(\begin{array}{c}
+1\\
+0
+\end{array}\right)\\&=&\left.|0\right\rangle \otimes\left.|1\right\rangle 
+\end{eqnarray}
+\end{exampleblock}
+
+
+\end{frame}
+
+\begin{frame}
+\begin{exampleblock}{}
+\begin{eqnarray}
+&&H^{\otimes\left(3+1\right)}\left[(I^{\otimes3}\otimes X)\left.|0\right\rangle _{n+1}\right]\\&=&H^{\otimes3}\left.|0\right\rangle \otimes H\left.|1\right\rangle \\&=&\frac{1}{\sqrt{2^{3}}}\left(\begin{array}{cc}
+1 & 1\\
+1 & -1
+\end{array}\right)\left(\begin{array}{c}
+1\\
+0
+\end{array}\right)\otimes\frac{1}{\sqrt{2}}\left(\begin{array}{cc}
+1 & 1\\
+1 & -1
+\end{array}\right)\left(\begin{array}{c}
+0\\
+1
+\end{array}\right)\\&=&\frac{1}{\sqrt{2^{3}}}\left(\begin{array}{cccccccc}
+1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+1 & -1 & 1 & -1 & 1 & -1 & 1 & -1\\
+1 & 1 & -1 & -1 & 1 & 1 & -1 & -1\\
+1 & -1 & -1 & 1 & 1 & -1 & -1 & 1\\
+1 & 1 & 1 & 1 & -1 & -1 & -1 & -1\\
+1 & -1 & 1 & -1 & -1 & 1 & -1 & 1\\
+1 & 1 & -1 & -1 & -1 & -1 & 1 & 1\\
+1 & -1 & -1 & 1 & -1 & 1 & 1 & -1
+\end{array}\right)\left(\begin{array}{c}
+1\\
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+0
+\end{array}\right)\otimes\frac{1}{\sqrt{2}}\left(\begin{array}{cc}
+1 & 1\\
+1 & -1
+\end{array}\right)\left(\begin{array}{c}
+0\\
+1
+\end{array}\right)\\&=&\frac{1}{\sqrt{2^{3}}}\left(\begin{array}{c}
+1\\
+1\\
+1\\
+1\\
+1\\
+1\\
+1\\
+1
+\end{array}\right)\otimes\frac{1}{\sqrt{2}}\left(\begin{array}{c}
+1\\
+-1
+\end{array}\right)\\&=&\frac{1}{2\sqrt{2}}\left.|000\right\rangle +\frac{1}{2\sqrt{2}}\left.|001\right\rangle +\frac{1}{2\sqrt{2}}\left.|010\right\rangle +\frac{1}{2\sqrt{2}}\left.|011\right\rangle \\&+&\frac{1}{2\sqrt{2}}\left.|100\right\rangle +\frac{1}{2\sqrt{2}}\left.|101\right\rangle +\frac{1}{2\sqrt{2}}\left.|110\right\rangle +\frac{1}{2\sqrt{2}}\left.|111\right\rangle \\&\otimes&\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)
+\end{eqnarray}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+\empty
+\end{frame}

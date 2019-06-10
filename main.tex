@@ -6,6 +6,12 @@
 \usepackage{braket} % quantum notation
 \usepackage{tcolorbox} % customization of boxes
 
+\usepackage{tikz}
+\usetikzlibrary{tikzmark,positioning,automata}
+\usetikzlibrary{shapes.geometric}
+\tikzstyle{every picture}+=[remember picture]
+
+
 \usetheme{CambridgeUS}
 \usecolortheme{rose}
 
@@ -63,6 +69,7 @@
 
 \include{sections/definiciones_basicas/definiciones_basicas}
 
-\include{sections/grovers/grovers}
+\include{sections/grovers/inicializacion}
+\include{sections/grovers/cambio_signo}
 
 \end{document}

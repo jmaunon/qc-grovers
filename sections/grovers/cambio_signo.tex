@@ -1,0 +1,63 @@
+\begin{frame}
+	\frametitle{Cambio de signo}
+	\begin{block}{\textit{Quantum Oracle}}
+		Se define el operador $U_f$ tal que 
+		\[U_{f}:\left.|j\right\rangle _{n}\otimes\left.|y\right\rangle _{1}\rightarrow\left.|j\right\rangle _{n}\otimes\left.|y\oplus f\left(j\right)\right\rangle _{1}\],
+		donde $\oplus$ es el operador suma en modulo 2, y $f\left(j\right)=\left\{ \begin{array}{cc}
+		1  & j=l\\
+		0  & j\neq l
+		\end{array}\right\} $
+	\end{block}
+	
+	
+	\begin{center}
+		\begin{tabular}{|c c |c|} 
+			\hline
+			A & B & XOR \\ 
+			\hline\hline
+			0&0&0  \\ 
+			\hline
+			0&1&1  \\ 
+			\hline
+			1&0&1  \\
+			\hline
+			1&1&0 \\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	%\frametitle{Cambio de signo}
+	\begin{eqnarray}
+		U_{f}\psi&=&U_{f}\left(\sum_{j\in\{0,1\}^{n}}\alpha_{j}\left.|j\right\rangle _{n}\otimes\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)\right)\nonumber\\
+		&=&U_{f}\left(\alpha_{l}\left.|l\right\rangle _{n}\otimes\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)+\sum_{\begin{array}{c}
+			j\in\{0,1\}^{n}\nonumber\\
+			j\neq l
+			\end{array}}\alpha_{j}\left.|j\right\rangle _{n}\otimes\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)\right)\\
+		&=&\left(\tikz[baseline]{
+			\node[fill=blue!20,anchor=base, fill on=<2>] (A)
+			{$ -\alpha_{l}\left.|l\right\rangle _{n}$};
+		} 
+				 +\sum_{\begin{array}{c}
+			j\in\{0,1\}^{n}\nonumber\\
+			j\neq l
+			\end{array}}\alpha_{j}\left.|j\right\rangle _{n}\right)\otimes\tikz[baseline]{
+			\node[fill=blue!20,anchor=base, fill on=<3>] (AA)
+			{$ -\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)$};
+		} 
+	\end{eqnarray}
+	\begin{tikzpicture}[
+	remember picture,
+	overlay,
+	expl/.style={draw=orange,fill=blue!20,rounded corners},
+	arrow/.style={red!80!black,ultra thick,->,>=latex}
+	]
+	\onslide<2->{\node[expl, xshift = -3cm](B) at (current page.center) {\Large Amplitud cambiada de signo!};}
+	\onslide<2->{\draw[arrow]
+	(A.west) to[out=200,in=180] (B.west);}
+	\onslide<3->{\node[expl, xshift = 3cm](BB) at (current page.center) {\Large Extra qubit intacto!};}
+	\onslide<3->{\draw[arrow]
+		(AA.east) to[out=-200,in=-180] (BB.east);}
+	\end{tikzpicture}
+\end{frame}

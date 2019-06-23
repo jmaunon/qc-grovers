@@ -1,0 +1,61 @@
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
+
+
+%%%%%%%%%%%%% TIKZ
+
+\tikzset{
+	invisible/.style={opacity=0,text opacity=0},
+	visible on/.style={alt=#1{}{invisible}},
+	alt/.code args={<#1>#2#3}{%
+		\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} 
+	},
+}
+
+\tikzset{
+	background fill/.style={fill=#1},
+	background fill/.default={white},
+	fill on/.style={alt=#1{}{background fill}},
+}
+
+\tikzset{
+	background draw/.style={draw=#1},
+	background draw/.default={white},
+	draw on/.style={alt=#1{}{background draw}},
+}
+
+\tikzset{
+	background filldraw/.style 2 args={draw=#1, fill=#2},
+	background filldraw/.default={white}{white},
+	filldraw on/.style={alt=#1{}{background filldraw}},
+}
+
+\tikzset{
+	background shade/.style={#1},
+	background shade/.default={top color=white, bottom color=white},
+	shade on/.style={alt=#1{}{background shade}},
+}
+
+\tikzset{
+	background shadedraw/.style 2 args={draw=#1, #2},
+	background shadedraw/.default={white}{top color=white, bottom color=white},
+	shadedraw on/.style={alt=#1{}{background shadedraw}},
+}
+
+\tikzset{onslide/.code args={<#1>#2}{%
+		\only<#1>{\pgfkeysalso{#2}}
+	}}

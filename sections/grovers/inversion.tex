@@ -1,0 +1,90 @@
+\begin{frame}
+	\frametitle{Inversión con con respecto la media}
+	Buscamos una forma (operador unitario) de invertir el valor de la amplitud con respecto la media.
+	\begin{equation*}
+		\sum_{j\in\{0,1\}^{n}}\alpha_{j}\left.|j\right\rangle _{n}\stackrel{U_d}{\longrightarrow}\sum_{j\in\{0,1\}^{n}}\left(2\left(\sum_{k\in\{0,1\}^{n}}\frac{\alpha_{k}}{2^{n}}\right)-\alpha_{j}\right)\left.|j\right\rangle _{n},
+	\end{equation*}
+	donde $\sum_{k\in\{0,1\}^{n}}\frac{\alpha_{k}}{2^{n}}$ es el valor medio.
+	\begin{exampleblock}{}
+		\[\sum_{k\in\{0,1\}^{n}}\frac{\alpha_{k}}{2^{n}}=\frac{1}{2^3}\frac{6}{2\sqrt{2}}\]
+	\end{exampleblock}
+\end{frame}
+\begin{frame}
+	\frametitle{Inversión con respecto la media}
+	\begin{block}{\textit{Difussion operator }}
+		\begin{eqnarray}
+			U_{d}=\left(\begin{array}{cccc}
+			\frac{2}{2^{n}} & \frac{2}{2^{n}} & \cdots & \frac{2}{2^{n}}\\
+			\frac{2}{2^{n}} & \frac{2}{2^{n}} & \cdots & \frac{2}{2^{n}}\\
+			\vdots & \vdots & \ddots & \vdots\\
+			\frac{2}{2^{n}} & \frac{2}{2^{n}} & \cdots & \frac{2}{2^{n}}
+			\end{array}\right)-I^{\otimes n}=\dots=-H^{\otimes n}DH^{\otimes n},
+		\end{eqnarray}
+		donde $D=diag\left(-1,1,1,\cdots,1\right)$
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{}
+	\frametitle{Inversion con respecto la media}
+	\begin{exampleblock}{Difussion operator in python}
+		\vspace*{0.5cm}
+		\begin{adjustbox}{max width=0.9\textwidth}
+			\begin{python}
+>>> import numpy as np
+>>> H1 = 1/np.sqrt(2)*np.array([[1,1],[1, -1]]) # Hadamard operator 1 qubit
+>>> H2 = np.kron(H1,H1) # Hadamard operator 2 qubit
+>>> H3 = np.kron(H2,H1) # Hadamard operator 3 qubit
+
+>>> D = np.eye(8) # Diagonal operator
+>>> D[0,0] = -1
+
+>>> Ud = -np.dot(np.dot(H3,D),H3) # Difussion operator
+>>> psi = 1/(2*np.sqrt(2))*np.array([1,1,1,-1,1,1,1,1]) # Initial state
+
+>>> psi_2 = np.dot(Uw,psi)
+>>> print(psi_2)
+array([0.176 , 0.176 , 0.176 , 0.883, 0.176, 0.176, 0.176, 0.176])
+			\end{python}
+		\end{adjustbox}
+	\end{exampleblock}
+
+\end{frame}
+\begin{frame}
+	\frametitle{Inversión con respecto la media}
+	\begin{exampleblock}{Difussion operator}
+	\begin{eqnarray}
+	U_d = -\frac{1}{8}\frac{1}{2\sqrt{2}}\begin{pmatrix*}[r]
+	6 & -2 & -2 & -2 & -2 & -2 & -2 & -2\\
+	-2 & 6 & -2 & -2 & -2 & -2 & -2 & -2\\
+	-2 & -2 & 6 & -2 & -2 & -2 & -2 & -2\\
+	-2 & -2 & -2 & 6 & -2 & -2 & -2 & -2\\
+	-2 & -2 & -2 & -2 & 6 & -2 & -2 & -2\\
+	-2 & -2 & -2 & -2 & -2 & 6 & -2 & -2\\
+	-2 & -2 & -2 & -2 & -2 & -2 & 6 & -2\\
+	-2 & -2 & -2 & -2 & -2 & -2 & -2 & 6
+	\end{pmatrix*}
+		\begin{pmatrix*}[r]
+		1\\
+		1\\
+		1\\
+		-1\\
+		1\\
+		1\\
+		1\\
+		1
+		\end{pmatrix*}=\frac{1}{4\sqrt{2}}
+		\left(
+		\begin{tabular}{c}
+		1\\
+		1\\
+		1\\
+		5\\
+		1\\
+		1\\
+		1\\
+		1
+		\end{tabular}
+		\right)\nonumber
+	\end{eqnarray}
+	\end{exampleblock}
+\end{frame}

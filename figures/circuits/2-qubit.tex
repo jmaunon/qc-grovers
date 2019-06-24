@@ -1,0 +1,13 @@
+\documentclass{standalone}
+\usepackage{tikz}
+
+\usepackage{braket} % quantum notation
+\usepackage{qcircuit} % quantum circuits
+
+\begin{document}
+	\Qcircuit @C=1em @R=.7em {
+		& \ket{0} &  & \gate{H} & \qw & \ctrl{1} & \qw & \qw & \gate{H} & \gate{X} & \ctrl{1} & \gate{X} & \gate{H} & \meter  \\
+		& \ket{0} &  & \gate{H} & \gate{X} & \ctrl{1} & \gate{X} & \qw & \gate{H} & \gate{X} & \targ & \gate{X} & \gate{H} & \meter \\
+		& \ket{1} &  & \gate{H} & \qw & \targ & \qw & \qw & \qw	& \qw & \qw   & \qw & \qw & \qw
+	}
+\end{document}

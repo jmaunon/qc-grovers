@@ -6,6 +6,17 @@
 \usepackage{braket} % quantum notation
 \usepackage{tcolorbox} % customization of boxes
 
+\usepackage[T1]{fontenc}         % Not always necessary, but recommended.
+% End of standard header.  What follows pertains to the problem at hand.
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{mathtools}
+
+
+
+
 \usepackage{tikz}
 \usetikzlibrary{tikzmark,positioning,automata}
 \usetikzlibrary{shapes.geometric}
@@ -46,12 +57,15 @@
 }
 
 
+
+
 \title{tbd}
 \subtitle{tbd}
 
 \date[tbd]{tbd}
 \author[jmaunon]{tbd}
-\input{mymacros.sty}
+\input{styles/mymacros.sty}
+\input{styles/pythonsintax.sty}
 \begin{document}
 
 
@@ -71,5 +85,11 @@
 
 \include{sections/grovers/inicializacion}
 \include{sections/grovers/cambio_signo}
+\include{sections/grovers/inversion}
+
+\section{Implementation of Grover's algorithm}
+\subsection{Implementation of 2-Qubit States}
+
+\include{sections/implementation/2-qubit}
 
 \end{document}

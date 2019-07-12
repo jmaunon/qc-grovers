@@ -1,5 +1,5 @@
 \begin{frame}
-	\frametitle{Inversión con con respecto la media}
+	\frametitle{Inversion about the average}
 	Buscamos una forma (operador unitario) de invertir el valor de la amplitud con respecto la media.
 	\begin{equation*}
 		\sum_{j\in\{0,1\}^{n}}\alpha_{j}\left.|j\right\rangle _{n}\stackrel{U_d}{\longrightarrow}\sum_{j\in\{0,1\}^{n}}\left(2\left(\sum_{k\in\{0,1\}^{n}}\frac{\alpha_{k}}{2^{n}}\right)-\alpha_{j}\right)\left.|j\right\rangle _{n},
@@ -10,8 +10,8 @@
 	\end{exampleblock}
 \end{frame}
 \begin{frame}
-	\frametitle{Inversión con respecto la media}
-	\begin{block}{\textit{Difussion operator }}
+	\frametitle{Inversion about the average}
+	\begin{block}{\textit{Difussion operator}}
 		\begin{eqnarray}
 			U_{d}=\left(\begin{array}{cccc}
 			\frac{2}{2^{n}} & \frac{2}{2^{n}} & \cdots & \frac{2}{2^{n}}\\
@@ -25,7 +25,7 @@
 \end{frame}
 
 \begin{frame}[fragile]{}
-	\frametitle{Inversion con respecto la media}
+	\frametitle{Inversion about the average}
 	\begin{exampleblock}{Difussion operator in python}
 		\vspace*{0.5cm}
 		\begin{adjustbox}{max width=0.9\textwidth}
@@ -39,10 +39,10 @@
 >>> D[0,0] = -1
 
 >>> Ud = -np.dot(np.dot(H3,D),H3) # Difussion operator
->>> psi = 1/(2*np.sqrt(2))*np.array([1,1,1,-1,1,1,1,1]) # Initial state
+>>> psi_2 = 1/(2*np.sqrt(2))*np.array([1,1,1,-1,1,1,1,1]) # Initial state
 
->>> psi_2 = np.dot(Uw,psi)
->>> print(psi_2)
+>>> psi_3 = np.dot(Uw,psi)
+>>> print(psi_3)
 array([0.176 , 0.176 , 0.176 , 0.883, 0.176, 0.176, 0.176, 0.176])
 			\end{python}
 		\end{adjustbox}
@@ -50,7 +50,7 @@ array([0.176 , 0.176 , 0.176 , 0.883, 0.176, 0.176, 0.176, 0.176])
 
 \end{frame}
 \begin{frame}
-	\frametitle{Inversión con respecto la media}
+	\frametitle{Inversion about the average}
 	\begin{exampleblock}{Difussion operator}
 	\begin{eqnarray}
 	U_d = -\frac{1}{8}\frac{1}{2\sqrt{2}}\begin{pmatrix*}[r]

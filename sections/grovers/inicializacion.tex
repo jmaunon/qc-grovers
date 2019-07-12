@@ -1,31 +1,32 @@
 \begin{frame}
-\frametitle{Inicialización}
-Buscamos una forma (operador unitario) de que todos los estados sean equiprobables. Se explota el principio de superposición
+\frametitle{Initialization}
+We find a method (unitary operator) to have all the states with the same probability (\textit{principle of superposition}). 
 \pause
 \begin{eqnarray}
 (I^{\otimes n}\otimes X)\left.|0\right\rangle _{n+1}&=&\left.|0\right\rangle _{n}\otimes\left.|1\right\rangle \nonumber\\
 H^{\otimes\left(n+1\right)}\left[(I^{\otimes n}\otimes X)\left.|0\right\rangle _{n+1}\right]&=&H^{\otimes n}\left.|0\right\rangle _{n}\otimes H\left.|1\right\rangle \nonumber\\
 &=&\sum_{j\in\{0,1\}^{n}}\frac{1}{\sqrt{2^{n}}}\left.|j\right\rangle _{n}\otimes\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)\nonumber\\
 &=&\sum_{j\in\{0,1\}^{n}}\alpha_{j}\left.|j\right\rangle _{n}\otimes\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)\nonumber\\
-&=&\psi_{n}\times\psi_{1}=\psi\nonumber
+&=&\psi^{[1]}\nonumber
 \end{eqnarray}
 \end{frame}
 
 \begin{frame}
-\frametitle{Definiciones básicas}
+\frametitle{Initialization}
 
-\begin{exampleblock}{Inicialización}
+\begin{exampleblock}{3-qubit example}
 \begin{eqnarray}
-(I^{\otimes3}\otimes X)\left.|0\right\rangle _{3+1}&=&I^{\otimes3}\left.|0\right\rangle _{3}\otimes X\left.|0\right\rangle \\&=&\left(\begin{array}{cccccccc}
-1\\
- & 1\\
- &  & 1\\
- &  &  & 1\\
- &  &  &  & 1\\
- &  &  &  &  & 1\\
- &  &  &  &  &  & 1\\
- &  &  &  &  &  &  & 1
-\end{array}\right)\left(\begin{array}{c}
+(I^{\otimes3}\otimes X)\left.|0\right\rangle _{3+1}&=&I^{\otimes3}\left.|0\right\rangle _{3}\otimes X\left.|0\right\rangle \nonumber\\
+&=&\begin{pmatrix*}[c]
+1&0&0&0&0&0&0&0\\
+0&1&0&0&0&0&0&0\\
+0&0&1&0&0&0&0&0\\
+0&0&0&1&0&0&0&0\\
+0&0&0&0&1&0&0&0\\
+0&0&0&0&0&1&0&0\\
+0&0&0&0&0&0&1&0\\
+0&0&0&0&0&0&0&1\\
+\end{pmatrix*}\left(\begin{array}{c}
 1\\
 0\\
 0\\
@@ -40,7 +41,8 @@ H^{\otimes\left(n+1\right)}\left[(I^{\otimes n}\otimes X)\left.|0\right\rangle _
 \end{array}\right)\left(\begin{array}{c}
 1\\
 0
-\end{array}\right)\\&=&\left.|0\right\rangle \otimes\left.|1\right\rangle 
+\end{array}\right)\nonumber\\
+&=&\left.|0\right\rangle_3 \otimes\left.|1\right\rangle \nonumber
 \end{eqnarray}
 \end{exampleblock}
 
@@ -48,9 +50,11 @@ H^{\otimes\left(n+1\right)}\left[(I^{\otimes n}\otimes X)\left.|0\right\rangle _
 \end{frame}
 
 \begin{frame}
+\frametitle{Initialization}
 \begin{exampleblock}{}
 \begin{eqnarray}
-&&H^{\otimes\left(3+1\right)}\left[(I^{\otimes3}\otimes X)\left.|0\right\rangle _{n+1}\right]\\&=&H^{\otimes3}\left.|0\right\rangle \otimes H\left.|1\right\rangle \\&=&\frac{1}{\sqrt{2^{3}}}\left(\begin{array}{cc}
+\psi^{[1]}&=&H^{\otimes\left(3+1\right)}\left[(I^{\otimes3}\otimes X)\left.|0\right\rangle _{n+1}\right]\nonumber\\
+&=&H^{\otimes3}\left.|0\right\rangle \otimes H\left.|1\right\rangle= \frac{1}{\sqrt{2^{3}}}\left(\begin{array}{cc}
 1 & 1\\
 1 & -1
 \end{array}\right)\left(\begin{array}{c}
@@ -62,7 +66,8 @@ H^{\otimes\left(n+1\right)}\left[(I^{\otimes n}\otimes X)\left.|0\right\rangle _
 \end{array}\right)\left(\begin{array}{c}
 0\\
 1
-\end{array}\right)\\&=&\frac{1}{\sqrt{2^{3}}}\left(\begin{array}{cccccccc}
+\end{array}\right)\nonumber\\
+&=&\frac{1}{\sqrt{2^{3}}}\begin{pmatrix*}[r]
 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
 1 & -1 & 1 & -1 & 1 & -1 & 1 & -1\\
 1 & 1 & -1 & -1 & 1 & 1 & -1 & -1\\
@@ -71,7 +76,7 @@ H^{\otimes\left(n+1\right)}\left[(I^{\otimes n}\otimes X)\left.|0\right\rangle _
 1 & -1 & 1 & -1 & -1 & 1 & -1 & 1\\
 1 & 1 & -1 & -1 & -1 & -1 & 1 & 1\\
 1 & -1 & -1 & 1 & -1 & 1 & 1 & -1
-\end{array}\right)\left(\begin{array}{c}
+\end{pmatrix*}\left(\begin{array}{c}
 1\\
 0\\
 0\\
@@ -86,39 +91,37 @@ H^{\otimes\left(n+1\right)}\left[(I^{\otimes n}\otimes X)\left.|0\right\rangle _
 \end{array}\right)\left(\begin{array}{c}
 0\\
 1
-\end{array}\right)\\
+\end{array}\right)\nonumber
 \end{eqnarray}
 \end{exampleblock}
 \end{frame}
 
 \begin{frame}
-	\begin{exampleblock}{}
+	\frametitle{Initialization}
+	\begin{exampleblock}{3-qubit example}
 		\begin{eqnarray}
-			&=&\frac{1}{\sqrt{2^{3}}}\left(\begin{array}{c}
-			1\\
-			1\\
-			1\\
-			1\\
-			1\\
-			1\\
-			1\\
-			1
-			\end{array}\right)\otimes\frac{1}{\sqrt{2}}\left(\begin{array}{c}
+			&=&\frac{1}{\sqrt{2^{3}}}\begin{pmatrix*}
+			1 1 1 1 1 1 1 1
+			\end{pmatrix*}^{\dagger}\otimes\frac{1}{\sqrt{2}}\left(\begin{array}{c}
 			1\\
 			-1
-			\end{array}\right)\\
-			&=&[ \frac{1}{2\sqrt{2}}\left.|000\right\rangle +\frac{1}{2\sqrt{2}}\left.|001\right\rangle +\frac{1}{2\sqrt{2}}\left.|010\right\rangle +\frac{1}{2\sqrt{2}}\left.|011\right\rangle \\&+&\frac{1}{2\sqrt{2}}\left.|100\right\rangle +\frac{1}{2\sqrt{2}}\left.|101\right\rangle +\frac{1}{2\sqrt{2}}\left.|110\right\rangle +\frac{1}{2\sqrt{2}}\left.|111\right\rangle] \\&\otimes&\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)			
+			\end{array}\right)\nonumber\\
+			&=&[ \frac{1}{2\sqrt{2}}\left.|000\right\rangle +\frac{1}{2\sqrt{2}}\left.|001\right\rangle +\frac{1}{2\sqrt{2}}\left.|010\right\rangle +\frac{1}{2\sqrt{2}}\left.|011\right\rangle \nonumber\\
+			&+&\frac{1}{2\sqrt{2}}\left.|100\right\rangle +\frac{1}{2\sqrt{2}}\left.|101\right\rangle +\frac{1}{2\sqrt{2}}\left.|110\right\rangle +\frac{1}{2\sqrt{2}}\left.|111\right\rangle] \nonumber\\
+			&\otimes&\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)		\nonumber	
 		\end{eqnarray}
 	\end{exampleblock}
 \end{frame}
 
 \begin{frame}{}
-	\begin{exampleblock}{}
+	\frametitle{Initialization}
+	\begin{exampleblock}{3-qubit example}
 		\begin{eqnarray}
-			H^{\otimes\left(3+1\right)}\left[(I^{\otimes3}\otimes X)\left.|0\right\rangle _{n+1}\right]
+			\psi^{[1]} &=&
+			H^{\otimes\left(3+1\right)}\left[(I^{\otimes3}\otimes X)\left.|0\right\rangle _{n+1}\right]\nonumber\\
 			&=&[\frac{1}{2\sqrt{2}}\left.|000\right\rangle +\frac{1}{2\sqrt{2}}\left.|001\right\rangle +\frac{1}{2\sqrt{2}}\left.|010\right\rangle +\frac{1}{2\sqrt{2}}\left.|011\right\rangle\nonumber\\ &+&\frac{1}{2\sqrt{2}}\left.|100\right\rangle +\frac{1}{2\sqrt{2}}\left.|101\right\rangle +\frac{1}{2\sqrt{2}}\left.|110\right\rangle +\frac{1}{2\sqrt{2}}\left.|111\right\rangle ]\nonumber\\
 			&\otimes&\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)\nonumber\\
-			&=&\sum_{j\in\{0,1\}^{n}}\frac{1}{\sqrt{2^{n}}}\left.|j\right\rangle _{n}\otimes\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)=\psi_{n}\times\psi_{1}
+			&=&\sum_{j\in\{0,1\}^{n}}\frac{1}{\sqrt{2^{n}}}\left.|j\right\rangle _{n}\otimes\frac{1}{\sqrt{2}}\left(\left.|0\right\rangle -\left.|1\right\rangle \right)=\psi^{[1]}\nonumber
 		\end{eqnarray}
 	\end{exampleblock}
 \end{frame}

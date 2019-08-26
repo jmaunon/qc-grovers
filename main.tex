@@ -80,23 +80,30 @@
 
 \end{frame}
 
-\section{Introduction to Quantum Computing}
-\section{Basic definitions}
 
-\include{sections/definiciones_basicas/definiciones_basicas}
+%\include{sections/definiciones_basicas/definiciones_basicas}
 
-\section{Grover's algorithm}
 
+\section{Motivation}
+\include{sections/grovers/motivation}
+
+\subsection{Summary}
+\include{sections/grovers/outline}
+
+\subsection{Steps}
 \include{sections/grovers/inicializacion}
 \include{sections/grovers/cambio_signo}
 \include{sections/grovers/inversion}
+\include{sections/grovers/measurement}
 
-\subsection{Implementation of Grover's algorithm: 2-Qubit States}
-\subsection{Implementation of Grover's algorithm: 3-Qubit States}
+\section{Implementation of Grover's algorithm: 2-Qubit States}
+\subsection{Quantum Circuit}
+\include{sections/implementation/2-qubit}
+\subsection{IBM Implementation: Qiskit}
 
 \section{Conclusion}
 
 
-\include{sections/implementation/2-qubit}
+
 
 \end{document}

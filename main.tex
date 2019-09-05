@@ -44,25 +44,62 @@
 %%%%%%%%%%%%%%%%%%
 
 
+\setbeamertemplate{section in toc}{%
+	{\color{orange!70!black}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+	\hspace{1.2em}{\color{orange}\inserttocsectionnumber.\inserttocsubsectionnumber.}~\inserttocsubsection\par}
+
+
 \newif\ifshowtoc
 \showtoctrue
 \AtBeginSection{%
 \ifshowtoc
-{\setbeamercolor{background canvas}{bg=red!60}
+{\setbeamercolor{background canvas}{bg=white}
 \begin{frame}[plain]
 \frametitle{Outline}
-\tableofcontents[currentsection, sectionstyle=show/hide]
+
+\tableofcontents[currentsection]
 \end{frame}}
 \fi
 }
 
+\newif\ifshowtoc
+\showtoctrue
+\AtBeginSubsection{%
+	\ifshowtoc
+	{\setbeamercolor{background canvas}{bg=white}
+		\begin{frame}[plain]
+			\frametitle{Outline}			
+			\tableofcontents[currentsubsection]
+	\end{frame}}
+	\fi
+}
 
 
-\title{tbd}
-\subtitle{tbd}
 
-\date[tbd]{tbd}
-\author[jmaunon]{tbd}
+
+\setbeamertemplate{headline}{%
+
+	\begin{beamercolorbox}[ht=2.5ex]{section in head/foot}
+		%\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
+		\vskip2pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
+	\end{beamercolorbox}%
+	%   \ifbeamer@theme@subsection%
+
+	\begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+		leftskip=.3cm,rightskip=.3cm plus1fil]{subsection in head/foot}
+		\vskip2pt\insertsubsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
+	\end{beamercolorbox}%
+
+}
+
+
+\title[Quantum Computing: Shor's]{Quantum Computing}
+\subtitle{A Gentle Introduction to Grover's Algorithm}
+
+\date{\today}
+\author[jmaunon]{Juan Miguel Au\~n\'on Garc\'ia}
 \input{styles/mymacros.sty}
 \input{styles/pythonsintax.sty}
 \begin{document}
@@ -84,10 +121,11 @@
 %\include{sections/definiciones_basicas/definiciones_basicas}
 
 
-\section{Motivation}
-\include{sections/grovers/motivation}
+\section{Grover's algorithm}
 
-\subsection{Summary}
+
+\subsection{Motivation \& Outline}
+\include{sections/grovers/motivation}
 \include{sections/grovers/outline}
 
 \subsection{Steps}
@@ -99,9 +137,9 @@
 \section{Implementation of Grover's algorithm: 2-Qubit States}
 \subsection{Quantum Circuit}
 \include{sections/implementation/2-qubit}
-\subsection{IBM Implementation: Qiskit}
+\subsection{IBM Implementation}
+\include{sections/implementation/IBM}
 
-\section{Conclusion}
 
 
 

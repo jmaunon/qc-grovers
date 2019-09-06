@@ -27,7 +27,7 @@ script:
   # You can use latexmk to automatically handle bibtex and references (recommended)
   # - latexmk -pdf main.tex
   #
-  - pdflatex -synctex=1 -interaction=nonstopmode "main".tex
+  - travis_wait 3 pdflatex -synctex=1 -interaction=nonstopmode "main".tex
 
   # But you could use any other compiler as well instead of latexmk. Example:
 #  - pdflatex main.tex

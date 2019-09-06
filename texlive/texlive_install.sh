@@ -31,3 +31,7 @@ tlmgr option -- autobackup 0
 
 # Update the TL install but add nothing new
 tlmgr update --self --all --no-auto-install
+
+# Install texlive-full
+
+sudo apt-get install -y texlive-latex-extra & texlive-latex-recommended

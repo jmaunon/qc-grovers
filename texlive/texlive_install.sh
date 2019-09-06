@@ -34,4 +34,5 @@ tlmgr update --self --all --no-auto-install
 
 # Install texlive-full
 
-sudo apt-get install -y texlive-latex-extra & texlive-latex-recommended
+sudo apt-get install texlive-full
+

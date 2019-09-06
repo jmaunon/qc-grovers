@@ -1,5 +1,5 @@
 language: generic
-
+sudo: required
 dist: bionic
 
 ## Uncomment the following lines if you require extra dependencies
@@ -23,7 +23,7 @@ cache:
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
   # Texliveonfly will download packages automatically
-  #- texliveonfly main.tex
+  - texliveonfly main.tex
   # You can use latexmk to automatically handle bibtex and references (recommended)
   # - latexmk -pdf main.tex
   #

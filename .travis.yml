@@ -11,6 +11,13 @@ dist: bionic
 # - cp -a $TRAVIS_BUILD_DIR/src/fonts/. $HOME/.fonts/
 # - fc-cache -f -v
 
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install texlive
+  - sudo apt-get install texlive-latex-recommended
+  - sudo apt-get install texlive-latex-extra
+  - sudo apt-get install texlive-extra-utils
+
 install:
   - source ./texlive/texlive_install.sh
 

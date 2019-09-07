@@ -36,7 +36,8 @@ tlmgr install   \
   stmaryrd      \
   amsmath       \
   beamer        \
-  tikzmark
+  tikzmark      \
+  expl3
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0

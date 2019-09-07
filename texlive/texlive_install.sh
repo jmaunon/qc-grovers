@@ -35,7 +35,8 @@ tlmgr install   \
   amsfonts      \
   stmaryrd      \
   amsmath       \
-  beamer
+  beamer        \
+  tikzmark
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0

@@ -34,7 +34,8 @@ script:
   # You can use latexmk to automatically handle bibtex and references (recommended)
   # - latexmk -pdf main.tex
   #
-  - travis_wait 3 pdflatex -synctex=1 -interaction=nonstopmode "main".tex
+  # - travis_wait 3 pdflatex -synctex=1 -interaction=nonstopmode "main".tex
+  - travis_wait 3 sh main.sh -v $VERSION
 
   # But you could use any other compiler as well instead of latexmk. Example:
 #  - pdflatex main.tex
@@ -49,3 +50,10 @@ script:
 after_script:
   - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
   - tlmgr list --only-installed | grep -oP 'i \K.+?(?=:)'
+deploy:
+  provider: releases
+  api_key: $GH_TOKEN
+  file: qc-grovers_v$VERSION.pdf
+  skip_cleanup: true
+  on:
+    tags: true

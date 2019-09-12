@@ -59,3 +59,71 @@
 \tikzset{onslide/.code args={<#1>#2}{%
 		\only<#1>{\pgfkeysalso{#2}}
 	}}
+
+
+% These options will be applied to all `tcolorboxes`
+\tcbset{%
+    noparskip,
+    colback=gray!10, %background color of the box
+    colframe=gray!40, %color of frame and title background
+    coltext=black, %color of body text
+    coltitle=black, %color of title text 
+    fonttitle=\bfseries,
+    alerted/.style={coltitle=black, 
+                     colframe=blue!70},
+    example/.style={coltitle=black, 
+                     colframe=blue!90},
+    }
+
+%===== custom toc =====
+\setbeamertemplate{section in toc}{%
+	{\color{orange!70!black}\inserttocsectionnumber.}~\inserttocsection}
+\setbeamercolor{subsection in toc}{bg=white,fg=structure}
+\setbeamertemplate{subsection in toc}{%
+	\hspace{1.2em}{\color{orange}\inserttocsectionnumber.\inserttocsubsectionnumber.}~\inserttocsubsection\par}
+
+%===== custom toc at begin section/subsection =====
+\newif\ifshowtoc
+\showtoctrue
+\AtBeginSection{%
+\ifshowtoc
+{\setbeamercolor{background canvas}{bg=white}
+\begin{frame}[plain]
+\frametitle{Outline}
+
+\tableofcontents[currentsection]
+\end{frame}}
+\fi
+}
+
+\newif\ifshowtoc
+\showtoctrue
+\AtBeginSubsection{%
+	\ifshowtoc
+	{\setbeamercolor{background canvas}{bg=white}
+		\begin{frame}[plain]
+			\frametitle{Outline}
+						
+			\tableofcontents[ currentsection,
+			currentsubsection,
+			subsectionstyle=show/shaded]
+	\end{frame}}
+	\fi
+}
+
+%===== custom headline =====
+
+\setbeamertemplate{headline}{%
+
+	\begin{beamercolorbox}[ht=2.5ex]{section in head/foot}
+		%\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
+		\vskip2pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
+	\end{beamercolorbox}%
+	%   \ifbeamer@theme@subsection%
+
+	\begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+		leftskip=.3cm,rightskip=.3cm plus1fil]{subsection in head/foot}
+		\vskip2pt\insertsubsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
+	\end{beamercolorbox}%
+
+}

@@ -1,5 +1,5 @@
 \documentclass[aspectratio=169]{beamer}
-\listfiles
+
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -71,8 +71,11 @@
 	\ifshowtoc
 	{\setbeamercolor{background canvas}{bg=white}
 		\begin{frame}[plain]
-			\frametitle{Outline}			
-			\tableofcontents[currentsubsection]
+			\frametitle{Outline}
+						
+			\tableofcontents[ currentsection,
+			currentsubsection,
+			subsectionstyle=show/shaded]
 	\end{frame}}
 	\fi
 }
@@ -99,7 +102,7 @@
 \title[Quantum Computing: Shor's]{Quantum Computing}
 \subtitle{A Gentle Introduction to Grover's Algorithm}
 
-\date{\today}
+\date{\today\\ v1.0}
 \author[jmaunon]{Juan Miguel Au\~n\'on Garc\'ia}
 \input{styles/mymacros.sty}
 \input{styles/pythonsintax.sty}

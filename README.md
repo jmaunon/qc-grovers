@@ -4,17 +4,17 @@ Notes about quantum computing, in particular about Grover's algorithm
 
 ![Drag Racing](code/data/images/qiskit-circuit.png)
 
-In this repository I explain the well-known Quantum Grover's Algorithm (see this [link](https://en.wikipedia.org/wiki/Grover%27s_algorithm) for more detail) step by step, using [qiskit](https://github.com/Qiskit/qiskit) framework for the implementation.
+In this repository I explain the well-known Quantum Grover's Algorithm (see this [link](https://en.wikipedia.org/wiki/Grover%27s_algorithm) for more detail) step by step. I address also the implementation using [qiskit](https://github.com/Qiskit/qiskit). 
 
 This personal repository started as some notes in a notebook, however I realized that although the algorithm was quite documented, I did not find any presentation that explained it step by step.
 
 The beamer presentation qc-grovers_v\<version\>.pdf is structured as following:
 1. Grover's algorithm
- 1. Motivation and Outline
- 2. Steps
+   1. Motivation and Outline
+   2. Steps
 2. Implementation of Grover's algorithm: 2-Qubit States
- 1. Quantum circuit
- 2. IBM Implementation 
+   1. Quantum circuit
+   2. IBM Implementation 
 3. References (*the reader can find them in the next section*)
 
 ### References

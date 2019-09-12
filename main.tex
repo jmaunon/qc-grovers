@@ -1,6 +1,5 @@
 \documentclass[aspectratio=169]{beamer}
 
-
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
@@ -15,89 +14,15 @@
 \usepackage{adjustbox}
 \usepackage{mathtools}
 
-
-
-
 \usepackage{tikz}
 \usetikzlibrary{tikzmark,positioning,automata}
 \usetikzlibrary{shapes.geometric}
 \tikzstyle{every picture}+=[remember picture]
 
-
 \usetheme{CambridgeUS}
 \usecolortheme{rose}
 
 \ProvidesPackage{mymacros}[2011/02/23 v1.0 My own macros]
-
-% These options will be applied to all `tcolorboxes`
-\tcbset{%
-    noparskip,
-    colback=gray!10, %background color of the box
-    colframe=gray!40, %color of frame and title background
-    coltext=black, %color of body text
-    coltitle=black, %color of title text 
-    fonttitle=\bfseries,
-    alerted/.style={coltitle=black, 
-                     colframe=blue!70},
-    example/.style={coltitle=black, 
-                     colframe=blue!90},
-    }
-%%%%%%%%%%%%%%%%%%
-
-
-\setbeamertemplate{section in toc}{%
-	{\color{orange!70!black}\inserttocsectionnumber.}~\inserttocsection}
-\setbeamercolor{subsection in toc}{bg=white,fg=structure}
-\setbeamertemplate{subsection in toc}{%
-	\hspace{1.2em}{\color{orange}\inserttocsectionnumber.\inserttocsubsectionnumber.}~\inserttocsubsection\par}
-
-
-\newif\ifshowtoc
-\showtoctrue
-\AtBeginSection{%
-\ifshowtoc
-{\setbeamercolor{background canvas}{bg=white}
-\begin{frame}[plain]
-\frametitle{Outline}
-
-\tableofcontents[currentsection]
-\end{frame}}
-\fi
-}
-
-\newif\ifshowtoc
-\showtoctrue
-\AtBeginSubsection{%
-	\ifshowtoc
-	{\setbeamercolor{background canvas}{bg=white}
-		\begin{frame}[plain]
-			\frametitle{Outline}
-						
-			\tableofcontents[ currentsection,
-			currentsubsection,
-			subsectionstyle=show/shaded]
-	\end{frame}}
-	\fi
-}
-
-
-
-
-\setbeamertemplate{headline}{%
-
-	\begin{beamercolorbox}[ht=2.5ex]{section in head/foot}
-		%\vskip2pt\insertnavigation{\paperwidth}\vskip2pt
-		\vskip2pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
-	\end{beamercolorbox}%
-	%   \ifbeamer@theme@subsection%
-
-	\begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
-		leftskip=.3cm,rightskip=.3cm plus1fil]{subsection in head/foot}
-		\vskip2pt\insertsubsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
-	\end{beamercolorbox}%
-
-}
-
 
 \title[Quantum Computing: Shor's]{Quantum Computing}
 \subtitle{A Gentle Introduction to Grover's Algorithm}
@@ -108,26 +33,16 @@
 \input{styles/pythonsintax.sty}
 \begin{document}
 
-
-
 \begin{frame}
 \titlepage
 \end{frame}
 
-
 \begin{frame}[plain]
 \frametitle{Outline}
 \tableofcontents
-
 \end{frame}
 
-
-%\include{sections/definiciones_basicas/definiciones_basicas}
-
-
 \section{Grover's algorithm}
-
-
 \subsection{Motivation \& Outline}
 \include{sections/grovers/motivation}
 \include{sections/grovers/outline}
@@ -142,7 +57,6 @@
 \subsection{Quantum Circuit}
 \include{sections/implementation/2-qubit}
 \subsection{IBM Implementation}
-%\include{sections/implementation/IBM}
 
 \section{References}
 \nocite{
@@ -155,10 +69,5 @@
 	\frametitle{References}
 	\bibliography{bibliography.bib}
 \end{frame}
-
-
-
-
-
 
 \end{document}

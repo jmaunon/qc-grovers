@@ -30,3 +30,4 @@
 /code/.Qiskit/*
 /code/.idea/*
 /code/.vscode/*
+*.fls

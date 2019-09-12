@@ -18,19 +18,19 @@ else
    echo $VERSION >> version.tex
 fi
 
-rm *.pdf
+rm -f *.pdf
 
 pdflatex -synctex=1 -interaction=nonstopmode  "main".tex 
 pdflatex -synctex=1 -interaction=nonstopmode  "main".tex
 
 cp main.pdf qc-grovers_v$VERSION.pdf
 
-rm *.vrb
-rm *.snm
-rm *.aux
-rm *.out
-rm *.toc
-rm *.nav
-rm *.gz
-rm *.log
+rm -f *.vrb
+rm -f *.snm
+rm -f *.aux
+rm -f *.out
+rm -f *.toc
+rm -f *.nav
+rm -f *.gz
+rm -f *.log
 

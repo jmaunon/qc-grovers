@@ -10,8 +10,8 @@ This personal repository started as some notes in a notebook, however I realized
 
 The beamer presentation qc-grovers_v\<version\>.pdf is structured as following:
 1. Grover's algorithm
-    1.1 Motivation \& Outline
-    1.2 Steps
+    1. Motivation and Outline
+    2. Steps
 2. Implementation of Grover's algorithm: 2-Qubit States
    2.1 Quantum circuit
    2.2 IBM Implementation 

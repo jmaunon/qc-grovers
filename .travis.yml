@@ -1,59 +1,32 @@
 language: r
 sudo: required
 dist: bionic
-
-## Uncomment the following lines if you require extra dependencies
-#before_install:
-# - sudo apt-get install ghostscript # If you use latex > dvips > ps2pdf
-# - sudo apt-get install python-pygments # If you use the minted package
-  # If you use custom fonts:
-# - mkdir $HOME/.fonts
-# - cp -a $TRAVIS_BUILD_DIR/src/fonts/. $HOME/.fonts/
-# - fc-cache -f -v
-
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install texlive-full
-  - sudo apt-get install texlive-latex-recommended
-  - sudo apt-get install texlive-latex-extra
-  - sudo apt-get install texlive-extra-utils
-
+- sudo apt-get update
+- sudo apt-get install texlive-full
+- sudo apt-get install texlive-latex-recommended
+- sudo apt-get install texlive-latex-extra
+- sudo apt-get install texlive-extra-utils
 install:
-  - source ./texlive/texlive_install.sh
-
+- source ./texlive/texlive_install.sh
 cache:
   directories:
-    - /tmp/texlive
-    - $HOME/.texlive
-
-# Change working directory so including files will work
+  - "/tmp/texlive"
+  - "$HOME/.texlive"
 before_script: cd $TRAVIS_BUILD_DIR/
 script:
-  # Texliveonfly will download packages automatically
-  - texliveonfly main.tex
-  # You can use latexmk to automatically handle bibtex and references (recommended)
-  # - latexmk -pdf main.tex
-  #
-  # - travis_wait 3 pdflatex -synctex=1 -interaction=nonstopmode "main".tex
-  - travis_wait 3 sh main.sh -v $VERSION
-
-  # But you could use any other compiler as well instead of latexmk. Example:
-#  - pdflatex main.tex
-#  - bibtex main
-#  - pdflatex main.tex
-#  - pdflatex main.tex # Compile twice to fix references
-
-  # You can also pass arguments to texliveonfly:
-#  - texliveonfly --arguments='-shell-escape' main.tex
-
-## Uncomment the following lines to see the packages installed in travis
+- texliveonfly main.tex
+- travis_wait 3 sh main.sh -v $VERSION
 after_script:
-  - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
-  - tlmgr list --only-installed | grep -oP 'i \K.+?(?=:)'
+- export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
+- tlmgr list --only-installed | grep -oP 'i \K.+?(?=:)'
 deploy:
   provider: releases
-  api_key: $GH_TOKEN
+  api_key: "$GH_TOKEN"
   file: qc-grovers_v$VERSION.pdf
   skip_cleanup: true
   on:
     tags: true
+env:
+  global:
+    secure: bQxYHWudil3QNs9gTGXgmolZYXT6SmDYLFonL703ROTA5wtjSvpxAWW3DECASys0b1y4pXw9c4ELO60oUhUZWc7TW6FMYZ8xFJ4x6gTndPKsH/fX/It1pIRrJMLxbC3uPmeEE+MKxH9THvzauVgfzCBCnWzwtP2yCt7AaNn/nBycvA3/TSFH9AHehcX7bSQW3mOe/RfgQNGakzpsfCa9qH8D4ZhgzQ85xoa6urS0wjn+r6FTstsXQhkcA1rdbmNOE64Qz7Hs2Dl4eB+X070GCVuOpw6Du6KOJjKOOVzfaJBPX7CKdjVP1LFWGJzsf5I85hymt7s4m3Xft7+bnS3edd3XZCKubCWJdvEvClUsXH13ZR2EHZD0rF20V8+WpOF8TgzjSxFGqwtmtHCjfeA4aCdAnQnzeHu/bGzlJ94MdFzzhDM2IzYtJOleiIRZCBgO5C6jz63ks2GgrYJ55ebokE/ZF1QncjW5e3F5kvqzsHgeEUBPowBvptrkuB2y4cgTUutBPIdWlTtbnncyJi+Q2dAaQE8i8hwsKXUrXaij32Y8+ORTE/DhjVYx09+VvOyYr1y322NelOIjzwnj9AO5FyqP5L7TEtX+s/ypVunTSD0plQmuVRtkKjtBuH2FkBNxzPhVgjBzo7TlkoZGormQ3z9rpd12hnZbPcqtnC5gJ/I=

@@ -13,13 +13,14 @@ cache:
   directories:
   - "/tmp/texlive"
   - "$HOME/.texlive"
-before_script: cd $TRAVIS_BUILD_DIR/
-script:
+before_script: 
+- cd $TRAVIS_BUILD_DIR/
 - texliveonfly main.tex
-- travis_wait 3 sh main.sh -v $VERSION
-after_script:
 - export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 - tlmgr list --only-installed | grep -oP 'i \K.+?(?=:)'
+script:
+- travis_wait 3 sh main.sh -v $VERSION
+
 deploy:
   provider: releases
   api_key: "$GH_TOKEN"

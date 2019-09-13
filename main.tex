@@ -1,0 +1,73 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{braket} % quantum notation
+\usepackage{tcolorbox} % customization of boxes
+
+\usepackage[T1]{fontenc}         % Not always necessary, but recommended.
+% End of standard header.  What follows pertains to the problem at hand.
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{mathtools}
+
+\usepackage{tikz}
+\usetikzlibrary{tikzmark,positioning,automata}
+\usetikzlibrary{shapes.geometric}
+\tikzstyle{every picture}+=[remember picture]
+
+\usetheme{CambridgeUS}
+\usecolortheme{rose}
+
+\ProvidesPackage{mymacros}[2011/02/23 v1.0 My own macros]
+
+\title[Quantum Computing: Shor's]{Quantum Computing}
+\subtitle{A Gentle Introduction to Grover's Algorithm}
+
+\date{\today\\ v\input{version.tex}}
+\author[jmaunon]{Juan Miguel Au\~n\'on Garc\'ia}
+\input{styles/mymacros.sty}
+\input{styles/pythonsintax.sty}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}[plain]
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Grover's algorithm}
+\subsection{Motivation \& Outline}
+\include{sections/grovers/motivation}
+\include{sections/grovers/outline}
+
+\subsection{Steps}
+\include{sections/grovers/inicializacion}
+\include{sections/grovers/cambio_signo}
+\include{sections/grovers/inversion}
+\include{sections/grovers/measurement}
+
+\section{Implementation of Grover's algorithm: 2-Qubit States}
+\subsection{Quantum Circuit}
+\include{sections/implementation/2-qubit}
+\subsection{IBM Implementation}
+\include{sections/implementation/IBM}
+\section{References}
+\nocite{
+	nielsen2002quantum,
+	DBLP:journals/corr/abs-1708-03684,
+	van2018quantum,
+	Qiskit}
+\bibliographystyle{IEEEtran}
+\begin{frame}
+	\frametitle{References}
+	\bibliography{bibliography.bib}
+\end{frame}
+
+\end{document}

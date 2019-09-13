@@ -1,6 +1,33 @@
-language: generic
+language: r
 sudo: required
-branches:
-  only:
-    - master
-    - develop
+dist: bionic
+before_install:
+- sudo apt-get update
+- sudo apt-get install texlive-full
+- sudo apt-get install texlive-latex-recommended
+- sudo apt-get install texlive-latex-extra
+- sudo apt-get install texlive-extra-utils
+install:
+- source ./texlive/texlive_install.sh
+cache:
+  directories:
+  - "/tmp/texlive"
+  - "$HOME/.texlive"
+before_script: 
+- cd $TRAVIS_BUILD_DIR/
+- texliveonfly main.tex
+- export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
+- tlmgr list --only-installed | grep -oP 'i \K.+?(?=:)'
+script:
+- travis_wait 3 sh main.sh -v $VERSION
+
+deploy:
+  provider: releases
+  api_key: "$GH_TOKEN"
+  file: qc-grovers_v$VERSION.pdf
+  skip_cleanup: true
+  on:
+    tags: true
+env:
+  global:
+    secure: bQxYHWudil3QNs9gTGXgmolZYXT6SmDYLFonL703ROTA5wtjSvpxAWW3DECASys0b1y4pXw9c4ELO60oUhUZWc7TW6FMYZ8xFJ4x6gTndPKsH/fX/It1pIRrJMLxbC3uPmeEE+MKxH9THvzauVgfzCBCnWzwtP2yCt7AaNn/nBycvA3/TSFH9AHehcX7bSQW3mOe/RfgQNGakzpsfCa9qH8D4ZhgzQ85xoa6urS0wjn+r6FTstsXQhkcA1rdbmNOE64Qz7Hs2Dl4eB+X070GCVuOpw6Du6KOJjKOOVzfaJBPX7CKdjVP1LFWGJzsf5I85hymt7s4m3Xft7+bnS3edd3XZCKubCWJdvEvClUsXH13ZR2EHZD0rF20V8+WpOF8TgzjSxFGqwtmtHCjfeA4aCdAnQnzeHu/bGzlJ94MdFzzhDM2IzYtJOleiIRZCBgO5C6jz63ks2GgrYJ55ebokE/ZF1QncjW5e3F5kvqzsHgeEUBPowBvptrkuB2y4cgTUutBPIdWlTtbnncyJi+Q2dAaQE8i8hwsKXUrXaij32Y8+ORTE/DhjVYx09+VvOyYr1y322NelOIjzwnj9AO5FyqP5L7TEtX+s/ypVunTSD0plQmuVRtkKjtBuH2FkBNxzPhVgjBzo7TlkoZGormQ3z9rpd12hnZbPcqtnC5gJ/I=

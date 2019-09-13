@@ -29,6 +29,6 @@
 *.tar.gz
 code/.Qiskit/*
 code/.idea/*
-code/.vscode/*
+.vscode/*
 *.fls
 *latexmk

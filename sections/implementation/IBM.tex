@@ -12,76 +12,75 @@
 	\end{center}
 \end{block}
 \end{frame}
-%
-%\begin{frame}[fragile]{}
-%	\frametitle{IBM Implementation: Qiskit}
-%	\framesubtitle{Backend \& Quantum Registers}
-%	\vspace*{0.5cm}
-%		\begin{adjustbox}{max width=0.8\textwidth}
-%			\begin{python}
-%				
-%from qiskit import *
-%from qiskit import QuantumCircuit
-%from qiskit.circuit.quantumcircuit import QuantumCircuit
-%from qiskit.visualization import plot_histogram
-%
-%backend = BasicAer.get_backend('qasm_simulator')
-%#backend = BasicAer.get_backend('statevector_simulator')
-%
-%'''Quantum register
-%https://quantumcomputing.stackexchange.com/questions/4907/
-%qiskit-is-there-any-way-to-discard-the-results-of-a-measurement'''
-%
-%q = QuantumRegister(2, 'q')
-%a = QuantumRegister(1, 'a')
-%c = ClassicalRegister(2, 'c')
-%			\end{python}
-%		\end{adjustbox}
-%
-%\end{frame}
-%
-%\begin{frame}[fragile]{}
-%	\frametitle{IBM Implementation: Qiskit}
-%	\framesubtitle{Quantum Circuit}
-%	\vspace*{0.25cm}
-%	\begin{adjustbox}{max width=0.7\textwidth}
-%		\begin{python}
-%#Circuit
-%circ = QuantumCircuit(q,a,c) # type: qiskit.circuit.quantumcircuit.QuantumCircuit
-%
-%# ===== prepare the states: psi^{[0]} =====
-%circ.iden(q[0])
-%circ.iden(q[1])
-%circ.x(a[0])
-%
-%#===== Initialization: psi^{[1]} =====
-%circ.h(q[0])
-%circ.h(q[1])
-%circ.h(a[0])
-%circ.barrier(q)
-%
-%#===== Sign flip: psi^{[2]} =====
-%circ.x(q[0])
-%circ.ccx(q[0], q[1], a[0])
-%circ.x(q[0])
-%
-%circ.barrier(q)
-%
-%#===== Inversion about average: psi^{[3]} =====
-%circ.h(q[0])
-%circ.h(q[1])
-%circ.x(q[0])
-%circ.x(q[1])
-%
-%circ.cz(q[0], q[1])
-%
-%circ.x(q[0])
-%circ.x(q[1])
-%		\end{python}
-%	\end{adjustbox}
-%	
-%\end{frame}
-%
+
+\begin{frame}[fragile]{}
+	\frametitle{IBM Implementation: Qiskit}
+	\framesubtitle{Backend \& Quantum Registers}
+	\vspace*{0.5cm}
+		\begin{adjustbox}{max width=0.8\textwidth}
+			\begin{python}
+				
+from qiskit import *
+from qiskit import QuantumCircuit
+from qiskit.circuit.quantumcircuit import QuantumCircuit
+from qiskit.visualization import plot_histogram
+
+backend = BasicAer.get_backend('qasm_simulator')
+#backend = BasicAer.get_backend('statevector_simulator')
+
+'''Quantum register
+https://quantumcomputing.stackexchange.com/questions/4907/
+qiskit-is-there-any-way-to-discard-the-results-of-a-measurement'''
+
+q = QuantumRegister(2, 'q')
+a = QuantumRegister(1, 'a')
+c = ClassicalRegister(2, 'c')
+			\end{python}
+		\end{adjustbox}
+
+\end{frame}
+
+\begin{frame}[fragile]{}
+	\frametitle{IBM Implementation: Qiskit}
+	\framesubtitle{Quantum Circuit}
+	\vspace*{0.25cm}
+	\begin{adjustbox}{max width=0.7\textwidth}
+		\begin{python}
+#Circuit
+circ = QuantumCircuit(q,a,c) # type: qiskit.circuit.quantumcircuit.QuantumCircuit
+
+# ===== prepare the states: psi^{[0]} =====
+circ.iden(q[0])
+circ.iden(q[1])
+circ.x(a[0])
+
+#===== Initialization: psi^{[1]} =====
+circ.h(q[0])
+circ.h(q[1])
+circ.h(a[0])
+circ.barrier(q)
+
+#===== Sign flip: psi^{[2]} =====
+circ.x(q[0])
+circ.ccx(q[0], q[1], a[0])
+circ.x(q[0])
+
+circ.barrier(q)
+
+#===== Inversion about average: psi^{[3]} =====
+circ.h(q[0])
+circ.h(q[1])
+circ.x(q[0])
+circ.x(q[1])
+
+circ.cz(q[0], q[1])
+
+circ.x(q[0])
+circ.x(q[1])
+		\end{python}
+	\end{adjustbox}	
+\end{frame}
+
 %\begin{frame}[fragile]{}
 %	\frametitle{IBM Implementation: Qiskit}
 %	\framesubtitle{Measurement}

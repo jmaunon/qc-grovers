@@ -31,3 +31,4 @@
 /code/.idea/*
 /code/.vscode/*
 *.fls
+*latexmk

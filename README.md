@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/juanmixp/qc-grovers.svg?branch=master)](https://travis-ci.org/juanmixp/qc-grovers)
+[![Version](https://img.shields.io/github/v/release/juanmixp/qc-grovers?style=plastic)]()
 # qc-grovers
 Notes about quantum computing, in particular about Grover's algorithm
 

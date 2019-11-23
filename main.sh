@@ -22,8 +22,8 @@ rm -f *.pdf
 
 echo "\n===== Build =====\n"
 
-pdflatex -synctex=1 -interaction=nonstopmode  "main".tex 
-pdflatex -synctex=1 -interaction=nonstopmode  "main".tex
+pdflatex -synctex=1 -interaction=nonstopmode --enable-write18 "main".tex 
+pdflatex -synctex=1 -interaction=nonstopmode --enable-write18 "main".tex
 
 cp main.pdf qc-grovers_v$VERSION.pdf
 

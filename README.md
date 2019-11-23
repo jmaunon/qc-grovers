@@ -30,4 +30,4 @@ f05164dd-b853-41a1-a9e9-394cb7a1105e
 computing,” 2019. [Online]. Available: https://doi.org/10.5281/zenodo.2562111
 
 ### Version
-This is the first version (v1.0), so please, any comment is welcome
+This is the first version (v1.1), so please, any comment is welcome

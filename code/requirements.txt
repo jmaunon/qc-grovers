@@ -1,2 +1,2 @@
-qiskit==0.11.0
+qiskit==1.4.2
 matplotlib
